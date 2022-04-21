@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue Basics</title>
+        <style>
+            [v-cloak]{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" v-cloak>
+            {{greeting}}
+            <input @keyup.enter="greet(greeting+' 254')" v-model="greeting" />
+            <br>
+            <button @click.right="toggleBox">Show Box</button>
+            <div v-if="isVisible" class="box">Toggle Box</div>
+        </div>
+        
+        
+        
+
+        <script src="https://unpkg.com/vue@3"></script>
+        <script>
+            let app = Vue.createApp({
+                data: function(){
+                    return{
+                        greeting: 'Hello Vue Js!',
+                        isVisible: false
+                    }
+                },
+                methods:{
+                    toggleBox(){
+                        this.isVisible=!this.isVisible
+                    },
+                    greet(greeting){
+                        alert(greeting)
+                    }
+                }
+            })
+            app.mount('#app')
+        </script>
+    </body>
+</html>
